@@ -62,11 +62,11 @@ public class NoteDetailScreenTest {
 
     /**
      * {@link ActivityTestRule} is a JUnit {@link Rule @Rule} to launch your activity under test.
-     *
+     * <p>
      * <p>
      * Rules are interceptors which are executed for each test method and are important building
      * blocks of Junit tests.
-     *
+     * <p>
      * <p>
      * Sometimes an {@link Activity} requires a custom start {@link Intent} to receive data
      * from the source Activity. ActivityTestRule has a feature which let's you lazily start the
@@ -80,7 +80,7 @@ public class NoteDetailScreenTest {
     /**
      * Setup your test fixture with a fake note id. The {@link NoteDetailActivity} is started with
      * a particular note id, which is then loaded from the service API.
-     *
+     * <p>
      * <p>
      * Note that this test runs hermetically and is fully isolated using a fake implementation of
      * the service API. This is a great way to make your tests more reliable and faster at the same
@@ -88,26 +88,25 @@ public class NoteDetailScreenTest {
      */
     @Before
     public void intentWithStubbedNoteId() {
-//        // Add a note stub to the fake service api layer.
-//        FakeNotesServiceApiImpl.addNotes(NOTE);
-//
-//        // Lazily start the Activity from the ActivityTestRule this time to inject the start Intent
-//        Intent startIntent = new Intent();
-//        startIntent.putExtra(NoteDetailActivity.EXTRA_NOTE_ID, NOTE.getId());
-//        mNoteDetailActivityTestRule.launchActivity(startIntent);
-//
-//        registerIdlingResource();
+        // Add a note stub to the fake service api layer.
+        FakeNotesServiceApiImpl.addNotes(NOTE);
+
+        // Lazily start the Activity from the ActivityTestRule this time to inject the start Intent
+        Intent startIntent = new Intent();
+        startIntent.putExtra(NoteDetailActivity.EXTRA_NOTE_ID, NOTE.getId());
+        mNoteDetailActivityTestRule.launchActivity(startIntent);
+
+        registerIdlingResource();
     }
 
     @Test
     public void noteDetails_DisplayedInUi() throws Exception {
-        fail("Implement step 7");
-//        // Check that the note title, description and image are displayed
-//        onView(withId(R.id.note_detail_title)).check(matches(withText(NOTE_TITLE)));
-//        onView(withId(R.id.note_detail_description)).check(matches(withText(NOTE_DESCRIPTION)));
-//        onView(withId(R.id.note_detail_image)).check(matches(allOf(
-//                hasDrawable(),
-//                isDisplayed())));
+        // Check that the note title, description and image are displayed
+        onView(withId(R.id.note_detail_title)).check(matches(withText(NOTE_TITLE)));
+        onView(withId(R.id.note_detail_description)).check(matches(withText(NOTE_DESCRIPTION)));
+        onView(withId(R.id.note_detail_image)).check(matches(allOf(
+                hasDrawable(),
+                isDisplayed())));
     }
 
     /**
